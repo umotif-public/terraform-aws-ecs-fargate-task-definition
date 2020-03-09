@@ -1,3 +1,8 @@
+variable "enabled" {
+  type        = bool
+  description = "Whether to create the resources. Set to `false` to prevent the module from creating any resources"
+  default     = true
+}
 
 variable "name_prefix" {
   description = "A prefix used for naming resources."
@@ -52,7 +57,8 @@ variable "task_container_environment" {
 
 variable "cloudwatch_log_group_name" {
   description = "CloudWatch log group name required to enabled logDriver in container definitions for ecs task."
-  type        = map(string)
+  type        = string
+  default     = ""
 }
 
 variable "tags" {
@@ -92,3 +98,8 @@ variable "volume" {
   default     = []
 }
 
+variable "docker_volume_configuration" {
+  type        = list
+  description = "(Optional) Used to configure a docker volume option \"docker_volume_configuration\". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html"
+  default     = []
+}

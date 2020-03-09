@@ -2,6 +2,8 @@
 # Execution IAM Role
 #####
 resource "aws_iam_role" "execution" {
+  count = var.enabled ? 1 : 0
+
   name               = "${var.name_prefix}-execution-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 
@@ -9,15 +11,17 @@ resource "aws_iam_role" "execution" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy_attach" {
-  role       = aws_iam_role.execution.name
+  count = var.enabled ? 1 : 0
+
+  role       = aws_iam_role.execution[0].name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
 resource "aws_iam_role_policy" "read_repository_credentials" {
-  count = length(var.repository_credentials) != 0 ? 1 : 0
+  count = length(var.repository_credentials) != 0 && var.enabled ? 1 : 0
 
   name   = "${var.name_prefix}-read-repository-credentials"
-  role   = aws_iam_role.execution.id
+  role   = aws_iam_role.execution[0].id
   policy = data.aws_iam_policy_document.read_repository_credentials.json
 }
 
@@ -25,6 +29,8 @@ resource "aws_iam_role_policy" "read_repository_credentials" {
 # IAM - Task role, basic. Append policies to this role for S3, DynamoDB etc.
 #####
 resource "aws_iam_role" "task" {
+  count = var.enabled ? 1 : 0
+
   name               = "${var.name_prefix}-task-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
 
@@ -32,8 +38,10 @@ resource "aws_iam_role" "task" {
 }
 
 resource "aws_iam_role_policy" "log_agent" {
+  count = var.enabled ? 1 : 0
+
   name   = "${var.name_prefix}-log-permissions"
-  role   = aws_iam_role.task.id
+  role   = aws_iam_role.task[0].id
   policy = data.aws_iam_policy_document.task_permissions.json
 }
 
@@ -51,13 +59,15 @@ locals {
 }
 
 resource "aws_ecs_task_definition" "task" {
+  count = var.enabled ? 1 : 0
+
   family                   = var.name_prefix
-  execution_role_arn       = aws_iam_role.execution.arn
+  execution_role_arn       = aws_iam_role.execution[0].arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.task_definition_cpu
   memory                   = var.task_definition_memory
-  task_role_arn            = aws_iam_role.task.arn
+  task_role_arn            = aws_iam_role.task[0].arn
 
   container_definitions = <<EOF
 [{
@@ -113,18 +123,27 @@ EOF
   dynamic "volume" {
     for_each = var.volume
     content {
-      name                        = volume.value.name
-      host_path                   = lookup(volume.value, "host_path", null)
-      docker_volume_configuration = lookup(volume.value, "docker_volume_configuration", null)
+      name      = volume.value.name
+      host_path = lookup(volume.value, "host_path", null)
+
+      dynamic "docker_volume_configuration" {
+        for_each = var.docker_volume_configuration
+        content {
+          scope         = lookup(docker_volume_configuration.value, "scope", null)
+          autoprovision = lookup(docker_volume_configuration.value, "autoprovision", null)
+          driver        = lookup(docker_volume_configuration.value, "driver", null)
+          driver_opts   = lookup(docker_volume_configuration.value, "driver_opts", null)
+          labels        = lookup(docker_volume_configuration.value, "labels", null)
+        }
+      }
     }
   }
-
 
   tags = merge(
     var.tags,
     {
       Name = var.container_name != "" ? var.container_name : var.name_prefix
-    },
+    }
   )
 }
 

@@ -1,5 +1,5 @@
 # terraform-aws-ecs-fargate-task-definition
-Terraform module to create AWS ECS Fargate Task Definition
+Terraform module to create AWS ECS Fargate Task Definition.
 
 ## Terraform versions
 
@@ -9,7 +9,23 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 
 ```hcl
 module "ecs-task-definition" {
-	...
+  source = "umotif-public/ecs-fargate-task-definition/aws"
+  version = "~> 1.0"
+
+  enabled              = true
+  name_prefix          = "test-container"
+  task_container_image = "httpd:2.4"
+
+  container_name      = "test-container-name"
+  task_container_port = "80"
+  task_host_port      = "80"
+
+  task_definition_cpu    = "512"
+  task_definition_memory = "1024"
+
+  task_container_environment = {
+    "ENVIRONEMNT" = "Test"
+  }
 }
 ```
 
@@ -19,7 +35,7 @@ Module is to be used with Terraform > 0.12.
 
 ## Examples
 
-* [Example]()
+* [ECS Fargate Task Definition](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/tree/master/examples/core)
 
 ## Authors
 
@@ -30,8 +46,10 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| cloudwatch\_log\_group\_name | CloudWatch log group name required to enabled logDriver in container definitions for ecs task. | map(string) | n/a | yes |
+| cloudwatch\_log\_group\_name | CloudWatch log group name required to enabled logDriver in container definitions for ecs task. | string | `""` | no |
 | container\_name | Optional name for the container to be used instead of name\_prefix. | string | `""` | no |
+| docker\_volume\_configuration | \(Optional\) Used to configure a docker volume option "docker\_volume\_configuration". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs\_task\_definition.html | list | `[]` | no |
+| enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | bool | `"true"` | no |
 | name\_prefix | A prefix used for naming resources. | string | n/a | yes |
 | placement\_constraints | \(Optional\) A set of placement constraints rules that are taken into consideration during task placement. Maximum number of placement\_constraints is 10. This is a list of maps, where each map should contain "type" and "expression" | list | `[]` | no |
 | proxy\_configuration | \(Optional\) The proxy configuration details for the App Mesh proxy. This is a list of maps, where each map should contain "container\_name", "properties" and "type" | list | `[]` | no |
@@ -59,7 +77,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | execution\_role\_unique\_id | The stable and unique string identifying the role. |
 | task\_definition\_arn | Full ARN of the Task Definition \(including both family and revision\). |
 | task\_definition\_family | The family of the Task Definition. |
-| task\_definition\_td\_revision | The revision of the task in a particular family. |
+| task\_definition\_revision | The revision of the task in a particular family. |
 | task\_role\_arn | The Amazon Resource Name \(ARN\) specifying the ECS service role. |
 | task\_role\_create\_date | The creation date of the IAM role. |
 | task\_role\_id | The ID of the role. |

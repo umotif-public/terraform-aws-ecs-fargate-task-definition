@@ -3,19 +3,27 @@ provider "aws" {
 }
 
 #####
-# VPC and subnets
+# task definition
 #####
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 2.21"
+module "ecs-task-definition" {
+  source = "../.."
 
-  name = "simple-vpc"
+  enabled              = true
+  name_prefix          = "test-container"
+  task_container_image = "httpd:2.4"
 
-  cidr = "10.0.0.0/16"
+  container_name      = "test-container-name"
+  task_container_port = "80"
+  task_host_port      = "80"
 
-  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  task_definition_cpu    = "512"
+  task_definition_memory = "1024"
 
-  enable_nat_gateway = false
+  task_container_environment = {
+    "ENVIRONEMNT" = "Test"
+  }
+
+  cloudwatch_log_group_name = "/test-cloudwatch/log-group"
+  task_container_command    = ["/bin/sh -c \"echo '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p> </div></body></html>' > /usr/local/apache2/htdocs/index.html && httpd-foreground\""]
 }
+
