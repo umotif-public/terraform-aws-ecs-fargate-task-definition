@@ -79,15 +79,19 @@ resource "aws_ecs_task_definition" "task" {
     },
     %{~endif}
     "essential": true,
+    %{if var.task_container_port != 0 || var.task_host_port != 0~}
     "portMappings": [
       {
-        "containerPort": ${var.task_container_port},
         %{if var.task_host_port != 0~}
         "hostPort": ${var.task_host_port},
+        %{~endif}
+        %{if var.task_container_port != 0~}
+        "containerPort": ${var.task_container_port},
         %{~endif}
         "protocol":"tcp"
       }
     ],
+    %{~endif}
     %{if var.cloudwatch_log_group_name != ""~}
     "logConfiguration": {
       "logDriver": "awslogs",

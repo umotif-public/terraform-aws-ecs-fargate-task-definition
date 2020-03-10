@@ -59,7 +59,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | task\_container\_command | The command that is passed to the container. | list(string) | `[]` | no |
 | task\_container\_environment | The environment variables to pass to a container. | map(string) | `{}` | no |
 | task\_container\_image | The image used to start a container. | string | n/a | yes |
-| task\_container\_port | The port number on the container that is bound to the user-specified or automatically assigned host port | number | n/a | yes |
+| task\_container\_port | The port number on the container that is bound to the user-specified or automatically assigned host port | number | `"0"` | no |
 | task\_definition\_cpu | Amount of CPU to reserve for the task. | number | `"256"` | no |
 | task\_definition\_memory | The soft limit \(in MiB\) of memory to reserve for the container. | number | `"512"` | no |
 | task\_host\_port | The port number on the container instance to reserve for your container. | number | `"0"` | no |
