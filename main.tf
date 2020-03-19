@@ -102,6 +102,15 @@ resource "aws_ecs_task_definition" "task" {
       }
     },
     %{~endif}
+    %{if var.task_health_check != null~}
+    "healthcheck": {
+        "command": ${jsonencode(var.task_health_check.command)},
+        "interval": ${var.task_health_check.interval},
+        "timeout": ${var.task_health_check.timeout},
+        "retries": ${var.task_health_check.retries},
+        "startPeriod": ${var.task_health_check.startPeriod}
+    },
+    %{~endif}
     "command": ${jsonencode(var.task_container_command)},
     "environment": ${jsonencode(local.task_environment)}
 }]
