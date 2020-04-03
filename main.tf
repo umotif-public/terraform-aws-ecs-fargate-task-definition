@@ -112,6 +112,18 @@ resource "aws_ecs_task_definition" "task" {
     },
     %{~endif}
     "command": ${jsonencode(var.task_container_command)},
+    %{if var.task_container_working_directory != ""~}
+    "workingDirectory": ${var.task_container_working_directory},
+    %{~endif}
+    %{if var.task_container_memory != null~}
+    "memory": ${var.task_container_memory},
+    %{~endif}
+    %{if var.task_container_memory_reservation != null~}
+    "memoryReservation": ${var.task_container_memory_reservation},
+    %{~endif}
+    %{if var.task_container_cpu != null~}
+    "cpu": ${var.task_container_cpu},
+    %{~endif}
     "environment": ${jsonencode(local.task_environment)}
 }]
 EOF
