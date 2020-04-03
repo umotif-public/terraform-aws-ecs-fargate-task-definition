@@ -39,8 +39,26 @@ variable "task_definition_cpu" {
 }
 
 variable "task_definition_memory" {
-  description = "The soft limit (in MiB) of memory to reserve for the container."
+  description = "The soft limit (in MiB) of memory to reserve for the task."
   default     = 512
+  type        = number
+}
+
+variable "task_container_cpu" {
+  description = "Amount of CPU to reserve for the container."
+  default     = null
+  type        = number
+}
+
+variable "task_container_memory" {
+  description = "The hard limit (in MiB) of memory for the container."
+  default     = null
+  type        = number
+}
+
+variable "task_container_memory_reservation" {
+  description = "The soft limit (in MiB) of memory to reserve for the container."
+  default     = null
   type        = number
 }
 
@@ -48,6 +66,12 @@ variable "task_container_command" {
   description = "The command that is passed to the container."
   default     = []
   type        = list(string)
+}
+
+variable "task_container_working_directory" {
+  description = "The working directory to run commands inside the container."
+  default     = ""
+  type        = string
 }
 
 variable "task_container_environment" {
