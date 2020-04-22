@@ -10,7 +10,7 @@ Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master
 ```hcl
 module "ecs-task-definition" {
   source = "umotif-public/ecs-fargate-task-definition/aws"
-  version = "~> 1.0"
+  version = "~> 1.1.0"
 
   enabled              = true
   name_prefix          = "test-container"
@@ -117,4 +117,7 @@ See LICENSE for full details.
 
 ```bash
 brew install pre-commit terraform-docs tflint
+
+brew tap git-chglog/git-chglog
+brew install git-chglog
 ```
