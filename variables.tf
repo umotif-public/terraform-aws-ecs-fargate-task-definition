@@ -105,6 +105,11 @@ variable "repository_credentials_kms_key" {
   type        = string
 }
 
+variable "create_repository_credentials_iam_policy" {
+  default     = false
+  description = "Set to true if you are speficying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role."
+}
+
 variable "placement_constraints" {
   type        = list
   description = "(Optional) A set of placement constraints rules that are taken into consideration during task placement. Maximum number of placement_constraints is 10. This is a list of maps, where each map should contain \"type\" and \"expression\""

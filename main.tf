@@ -18,11 +18,11 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy_attach
 }
 
 resource "aws_iam_role_policy" "read_repository_credentials" {
-  count = length(var.repository_credentials) != 0 && var.enabled ? 1 : 0
+  count = var.create_repository_credentials_iam_policy && var.enabled ? 1 : 0
 
   name   = "${var.name_prefix}-read-repository-credentials"
   role   = aws_iam_role.execution[0].id
-  policy = data.aws_iam_policy_document.read_repository_credentials.json
+  policy = data.aws_iam_policy_document.read_repository_credentials[0].json
 }
 
 #####

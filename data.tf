@@ -26,16 +26,20 @@ data "aws_iam_policy_document" "task_permissions" {
 }
 
 data "aws_kms_key" "secretsmanager_key" {
+  count = var.create_repository_credentials_iam_policy && var.enabled ? 1 : 0
+
   key_id = var.repository_credentials_kms_key
 }
 
 data "aws_iam_policy_document" "read_repository_credentials" {
+  count = var.create_repository_credentials_iam_policy && var.enabled ? 1 : 0
+
   statement {
     effect = "Allow"
 
     resources = [
       var.repository_credentials,
-      data.aws_kms_key.secretsmanager_key.arn,
+      data.aws_kms_key.secretsmanager_key[0].arn,
     ]
 
     actions = [
