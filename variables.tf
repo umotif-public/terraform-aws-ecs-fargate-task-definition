@@ -107,7 +107,7 @@ variable "repository_credentials_kms_key" {
 
 variable "create_repository_credentials_iam_policy" {
   default     = false
-  description = "Set to true if you are speficying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role."
+  description = "Set to true if you are specifying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role."
 }
 
 variable "placement_constraints" {

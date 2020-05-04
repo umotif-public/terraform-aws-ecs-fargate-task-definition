@@ -58,7 +58,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | cloudwatch\_log\_group\_name | CloudWatch log group name required to enabled logDriver in container definitions for ecs task. | `string` | `""` | no |
 | container\_name | Optional name for the container to be used instead of name\_prefix. | `string` | `""` | no |
-| create\_repository\_credentials\_iam\_policy | Set to true if you are speficying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role. | `bool` | `false` | no |
+| create\_repository\_credentials\_iam\_policy | Set to true if you are specifying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role. | `bool` | `false` | no |
 | docker\_volume\_configuration | (Optional) Used to configure a docker volume option "docker\_volume\_configuration". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html | `list` | `[]` | no |
 | enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | `bool` | `true` | no |
 | name\_prefix | A prefix used for naming resources. | `string` | n/a | yes |
