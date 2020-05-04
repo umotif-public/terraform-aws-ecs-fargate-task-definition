@@ -2,6 +2,17 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+data "aws_kms_key" "secretsmanager_key" {
+  key_id = "alias/aws/secretsmanager"
+}
+
+
+resource "aws_secretsmanager_secret" "task_credentials" {
+  name = "task_repository_credentials"
+
+  kms_key_id = data.aws_kms_key.secretsmanager_key.arn
+}
+
 #####
 # task definition
 #####
@@ -25,5 +36,8 @@ module "ecs-task-definition" {
 
   cloudwatch_log_group_name = "/test-cloudwatch/log-group"
   task_container_command    = ["/bin/sh -c \"echo '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p> </div></body></html>' > /usr/local/apache2/htdocs/index.html && httpd-foreground\""]
+
+  create_repository_credentials_iam_policy = true
+  repository_credentials                   = aws_secretsmanager_secret.task_credentials.arn # also set create_repository_credentials_iam_policy = true
 }
 
