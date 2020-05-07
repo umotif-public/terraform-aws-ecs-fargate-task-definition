@@ -36,6 +36,7 @@ Module is to be used with Terraform > 0.12.
 ## Examples
 
 * [ECS Fargate Task Definition](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/tree/master/examples/core)
+* [ECS Fargate Task Definition with EFS](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/tree/master/examples/task-efs)
 
 ## Authors
 
