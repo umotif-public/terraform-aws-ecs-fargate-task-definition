@@ -124,18 +124,30 @@ variable "proxy_configuration" {
 
 variable "volume" {
   type        = list
-  description = "(Optional) A set of volume blocks that containers in your task may use. This is a list of maps, where each map should contain \"name\", \"host_path\" and \"docker_volume_configuration\". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html"
-  default     = []
-}
-
-variable "docker_volume_configuration" {
-  type        = list
-  description = "(Optional) Used to configure a docker volume option \"docker_volume_configuration\". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html"
+  description = "(Optional) A set of volume blocks that containers in your task may use. This is a list of maps, where each map should contain \"name\", \"host_path\", \"docker_volume_configuration\" and \"efs_volume_configuration\". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html"
   default     = []
 }
 
 variable "task_health_check" {
   type        = object({ command = list(string), interval = number, timeout = number, retries = number, startPeriod = number })
   description = "An optional healthcheck definition for the task"
+  default     = null
+}
+
+variable "task_start_timeout" {
+  type        = number
+  description = "Time duration (in seconds) to wait before giving up on resolving dependencies for a container. If this parameter is not specified, the default value of 3 minutes is used (fargate)."
+  default     = null
+}
+
+variable "task_stop_timeout" {
+  type        = number
+  description = "Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own. The max stop timeout value is 120 seconds and if the parameter is not specified, the default value of 30 seconds is used."
+  default     = null
+}
+
+variable "task_mount_points" {
+  description = "The mount points for data volumes in your container. Each object inside the list requires \"sourceVolume\", \"containerPath\" and \"readOnly\". For more information see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html "
+  type        = list(object({ sourceVolume = string, containerPath = string, readOnly = bool }))
   default     = null
 }

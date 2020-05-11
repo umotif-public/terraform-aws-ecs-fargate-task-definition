@@ -2,20 +2,13 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-#####
-# Optional Secret creation for task credentials
-#####
+resource "aws_efs_file_system" "efs" {
+  creation_token = "efs-html"
 
-# data "aws_kms_key" "secretsmanager_key" {
-#   key_id = "alias/aws/secretsmanager"
-# }
-
-
-# resource "aws_secretsmanager_secret" "task_credentials" {
-#   name = "task_repository_credentials"
-
-#   kms_key_id = data.aws_kms_key.secretsmanager_key.arn
-# }
+  tags = {
+    Name = "efs-html"
+  }
+}
 
 #####
 # task definition
@@ -43,8 +36,23 @@ module "ecs-task-definition" {
 
   task_stop_timeout = 90
 
-  ### uncomment the following lines to use private repository credentials
-  # create_repository_credentials_iam_policy = true
-  # repository_credentials                   = aws_secretsmanager_secret.task_credentials.arn # also set create_repository_credentials_iam_policy = true
-}
+  task_mount_points = [
+    {
+      "sourceVolume"  = aws_efs_file_system.efs.creation_token,
+      "containerPath" = "/usr/share/nginx/html",
+      "readOnly"      = true
+    }
+  ]
 
+  volume = [
+    {
+      name = "efs-html",
+      efs_volume_configuration = [
+        {
+          "file_system_id" : aws_efs_file_system.efs.id,
+          "root_directory" : "/usr/share/nginx"
+        }
+      ]
+    }
+  ]
+}
