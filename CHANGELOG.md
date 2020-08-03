@@ -7,6 +7,19 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="1.3.1"></a>
+## [1.3.1] - 2020-06-23
+
+- Update variables.tf
+
+
+<a name="1.3.0"></a>
+## [1.3.0] - 2020-05-11
+
+- Add support for container timeouts and volumes ([#6](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/6))
+- update changelog
+
+
 <a name="1.2.0"></a>
 ## [1.2.0] - 2020-05-04
 
@@ -40,7 +53,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.1...HEAD
+[1.3.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.0...1.3.1
+[1.3.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.0.1...1.0.2

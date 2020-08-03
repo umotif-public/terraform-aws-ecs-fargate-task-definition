@@ -3,14 +3,14 @@ Terraform module to create AWS ECS Fargate Task Definition.
 
 ## Terraform versions
 
-Terraform 0.12. Pin module version to `~> v1.0`. Submit pull-requests to `master` branch.
+Terraform 0.12. Pin module version to `~> v2.0`. Submit pull-requests to `master` branch.
 
 ## Usage
 
 ```hcl
 module "ecs-task-definition" {
   source = "umotif-public/ecs-fargate-task-definition/aws"
-  version = "~> 1.2.0"
+  version = "~> 2.0.0"
 
   enabled              = true
   name_prefix          = "test-container"
@@ -45,13 +45,15 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| aws | ~> 2.68 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | ~> 2.68 |
 
 ## Inputs
 
