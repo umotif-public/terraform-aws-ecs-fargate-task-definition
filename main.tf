@@ -141,14 +141,14 @@ EOF
     for_each = var.placement_constraints
     content {
       expression = lookup(placement_constraints.value, "expression", null)
-      type       = lookup(placement_constraints.value, "type", null)
+      type       = placement_constraints.value.type
     }
   }
 
   dynamic "proxy_configuration" {
     for_each = var.proxy_configuration
     content {
-      container_name = lookup(proxy_configuration.value, "container_name", null)
+      container_name = proxy_configuration.value.container_name
       properties     = lookup(proxy_configuration.value, "properties", null)
       type           = lookup(proxy_configuration.value, "type", null)
     }
@@ -157,7 +157,7 @@ EOF
   dynamic "volume" {
     for_each = var.volume
     content {
-      name      = lookup(volume.value, "name", null)
+      name      = volume.value.name
       host_path = lookup(volume.value, "host_path", null)
 
       dynamic "docker_volume_configuration" {
