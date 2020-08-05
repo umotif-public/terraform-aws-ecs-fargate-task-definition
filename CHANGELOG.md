@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- Update module versions to support v3 provider
+
+
+<a name="2.0.0"></a>
+## [2.0.0] - 2020-08-03
+
+- Add full support for efs volume config ([#7](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/7))
 
 
 <a name="1.3.1"></a>
@@ -53,7 +60,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.1...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.1...2.0.0
 [1.3.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.0...1.3.1
 [1.3.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.1.0...1.2.0
