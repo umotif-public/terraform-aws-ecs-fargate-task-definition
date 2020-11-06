@@ -47,14 +47,14 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.6, < 0.14 |
-| aws | >= 2.68, < 4.0 |
+| terraform | >= 0.12.6 |
+| aws | >= 2.68 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.68, < 4.0 |
+| aws | >= 2.68 |
 
 ## Inputs
 
