@@ -80,6 +80,12 @@ variable "task_container_environment" {
   type        = map(string)
 }
 
+variable "task_container_secrets" {
+  description = "The secrets variables to pass to a container."
+  default     = null
+  type        = list(map(string))
+}
+
 variable "cloudwatch_log_group_name" {
   description = "CloudWatch log group name required to enabled logDriver in container definitions for ecs task."
   type        = string
