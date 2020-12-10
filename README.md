@@ -65,8 +65,8 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | create\_repository\_credentials\_iam\_policy | Set to true if you are specifying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role. | `bool` | `false` | no |
 | enabled | Whether to create the resources. Set to `false` to prevent the module from creating any resources | `bool` | `true` | no |
 | name\_prefix | A prefix used for naming resources. | `string` | n/a | yes |
-| placement\_constraints | (Optional) A set of placement constraints rules that are taken into consideration during task placement. Maximum number of placement\_constraints is 10. This is a list of maps, where each map should contain "type" and "expression" | `list` | `[]` | no |
-| proxy\_configuration | (Optional) The proxy configuration details for the App Mesh proxy. This is a list of maps, where each map should contain "container\_name", "properties" and "type" | `list` | `[]` | no |
+| placement\_constraints | (Optional) A set of placement constraints rules that are taken into consideration during task placement. Maximum number of placement\_constraints is 10. This is a list of maps, where each map should contain "type" and "expression" | `list(any)` | `[]` | no |
+| proxy\_configuration | (Optional) The proxy configuration details for the App Mesh proxy. This is a list of maps, where each map should contain "container\_name", "properties" and "type" | `list(any)` | `[]` | no |
 | repository\_credentials | name or ARN of a secrets manager secret (arn:aws:secretsmanager:region:aws\_account\_id:secret:secret\_name) | `string` | `""` | no |
 | repository\_credentials\_kms\_key | key id, key ARN, alias name or alias ARN of the key that encrypted the repository credentials | `string` | `"alias/aws/secretsmanager"` | no |
 | tags | A map of tags (key-value pairs) passed to resources. | `map(string)` | `{}` | no |
@@ -77,6 +77,7 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 | task\_container\_memory | The hard limit (in MiB) of memory for the container. | `number` | `null` | no |
 | task\_container\_memory\_reservation | The soft limit (in MiB) of memory to reserve for the container. | `number` | `null` | no |
 | task\_container\_port | The port number on the container that is bound to the user-specified or automatically assigned host port | `number` | `0` | no |
+| task\_container\_secrets | The secrets variables to pass to a container. | `list(map(string))` | `null` | no |
 | task\_container\_working\_directory | The working directory to run commands inside the container. | `string` | `""` | no |
 | task\_definition\_cpu | Amount of CPU to reserve for the task. | `number` | `256` | no |
 | task\_definition\_memory | The soft limit (in MiB) of memory to reserve for the task. | `number` | `512` | no |
