@@ -1,3 +1,5 @@
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/umotif-public/terraform-aws-ecs-fargate-task-definition?style=social)
+
 # terraform-aws-ecs-fargate-task-definition
 Terraform module to create AWS ECS Fargate Task Definition.
 
