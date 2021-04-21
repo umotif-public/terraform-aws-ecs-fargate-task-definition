@@ -14,7 +14,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_role_policy_attach
   count = var.enabled ? 1 : 0
 
   role       = aws_iam_role.execution[0].name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  policy_arn = "arn:${data.aws_partition.current.partition}:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
 
 resource "aws_iam_role_policy" "read_repository_credentials" {
