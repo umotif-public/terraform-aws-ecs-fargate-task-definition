@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+
+<a name="2.1.1"></a>
+## [2.1.1] - 2021-04-21
+
+- Readme update ([#14](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/14))
+- Add aws_partition to support china region ([#13](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/13))
+- Update README.md
+
+
+<a name="2.1.0"></a>
+## [2.1.0] - 2020-12-10
+
+- Update docs
 - Add in secrets just like the fargate module ([#12](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/12))
 
 
@@ -72,7 +86,9 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.2...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.1...HEAD
+[2.1.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.0...2.1.1
+[2.1.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.2...2.1.0
 [2.0.2]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/1.3.1...2.0.0
