@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "eu-west-1"
-}
-
 #####
 # Optional Secret creation for task credentials
 #####
@@ -31,8 +27,8 @@ module "ecs-task-definition" {
   task_container_port = "80"
   task_host_port      = "80"
 
-  task_definition_cpu    = "512"
-  task_definition_memory = "1024"
+  task_definition_cpu    = "256"
+  task_definition_memory = "512"
 
   task_container_environment = {
     "ENVIRONEMNT" = "Test"

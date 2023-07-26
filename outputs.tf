@@ -1,69 +1,69 @@
 output "task_role_arn" {
   description = "The Amazon Resource Name (ARN) specifying the ECS service role."
-  value       = join("", aws_iam_role.task.*.arn)
+  value       = var.enabled ? aws_iam_role.task[0].arn : null
 }
 
 output "task_role_name" {
   description = "The name of the Fargate task service role."
-  value       = join("", aws_iam_role.task.*.name)
+  value       = var.enabled ? aws_iam_role.task[0].name : null
 }
 
 output "task_role_create_date" {
   description = "The creation date of the IAM role."
-  value       = join("", aws_iam_role.task.*.create_date)
+  value       = var.enabled ? aws_iam_role.task[0].create_date : null
 }
 
 output "task_role_id" {
   description = "The ID of the role."
-  value       = join("", aws_iam_role.task.*.id)
+  value       = var.enabled ? aws_iam_role.task[0].id : null
 }
 
 output "task_role_unique_id" {
   description = "The stable and unique string identifying the role."
-  value       = join("", aws_iam_role.task.*.unique_id)
+  value       = var.enabled ? aws_iam_role.task[0].unique_id : null
 }
 
 output "execution_role_arn" {
-  description = "The Amazon Resource Name (ARN) of execution role."
-  value       = join("", aws_iam_role.execution.*.arn)
+  description = "The Amazon Resource Name (ARN : null of execution role."
+  value       = var.enabled ? aws_iam_role.execution[0].arn : null
 }
 
 output "execution_role_name" {
   description = "The name of the execution service role."
-  value       = join("", aws_iam_role.execution.*.name)
+  value       = var.enabled ? aws_iam_role.execution[0].name : null
 }
 
 output "execution_role_create_date" {
   description = "The creation date of the IAM role."
-  value       = join("", aws_iam_role.execution.*.create_date)
+  value       = var.enabled ? aws_iam_role.execution[0].create_date : null
 }
 
 output "execution_role_id" {
   description = "The ID of the execution role."
-  value       = join("", aws_iam_role.execution.*.id)
+  value       = var.enabled ? aws_iam_role.execution[0].id : null
 }
 
 output "execution_role_unique_id" {
   description = "The stable and unique string identifying the role."
-  value       = join("", aws_iam_role.execution.*.unique_id)
+  value       = var.enabled ? aws_iam_role.execution[0].unique_id : null
 }
 
 output "task_definition_arn" {
   description = "Full ARN of the Task Definition (including both family and revision)."
-  value       = join("", aws_ecs_task_definition.task.*.arn)
+  value       = var.enabled ? aws_ecs_task_definition.task[0].arn : null
 }
 
 output "task_definition_family" {
   description = "The family of the Task Definition."
-  value       = join("", aws_ecs_task_definition.task.*.family)
+  value       = var.enabled ? aws_ecs_task_definition.task[0].family : null
 }
 
 output "task_definition_revision" {
   description = "The revision of the task in a particular family."
-  value       = join("", aws_ecs_task_definition.task.*.revision)
+  value       = var.enabled ? aws_ecs_task_definition.task[0].revision : null
 }
 
 output "container_port" {
   description = "Port on which the container is listening."
-  value       = var.task_container_port
+  value       = var.enabled ? var.task_container_port : null
 }

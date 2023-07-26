@@ -49,14 +49,14 @@ Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](http
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.6 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.68 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.11 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.76.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.68 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.76.1 |
 
 ## Modules
 
@@ -109,14 +109,14 @@ No modules.
 | <a name="input_task_mount_points"></a> [task\_mount\_points](#input\_task\_mount\_points) | The mount points for data volumes in your container. Each object inside the list requires "sourceVolume", "containerPath" and "readOnly". For more information see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html | `list(object({ sourceVolume = string, containerPath = string, readOnly = bool }))` | `null` | no |
 | <a name="input_task_start_timeout"></a> [task\_start\_timeout](#input\_task\_start\_timeout) | Time duration (in seconds) to wait before giving up on resolving dependencies for a container. If this parameter is not specified, the default value of 3 minutes is used (fargate). | `number` | `null` | no |
 | <a name="input_task_stop_timeout"></a> [task\_stop\_timeout](#input\_task\_stop\_timeout) | Time duration (in seconds) to wait before the container is forcefully killed if it doesn't exit normally on its own. The max stop timeout value is 120 seconds and if the parameter is not specified, the default value of 30 seconds is used. | `number` | `null` | no |
-| <a name="input_volume"></a> [volume](#input\_volume) | (Optional) A set of volume blocks that containers in your task may use. This is a list of maps, where each map should contain "name", "host\_path", "docker\_volume\_configuration" and "efs\_volume\_configuration". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html | `list` | `[]` | no |
+| <a name="input_volume"></a> [volume](#input\_volume) | (Optional) A set of volume blocks that containers in your task may use. This is a list of maps, where each map should contain "name", "host\_path", "docker\_volume\_configuration" and "efs\_volume\_configuration". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html | `any` | `[]` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_container_port"></a> [container\_port](#output\_container\_port) | Port on which the container is listening. |
-| <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | The Amazon Resource Name (ARN) of execution role. |
+| <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | The Amazon Resource Name (ARN : null of execution role. |
 | <a name="output_execution_role_create_date"></a> [execution\_role\_create\_date](#output\_execution\_role\_create\_date) | The creation date of the IAM role. |
 | <a name="output_execution_role_id"></a> [execution\_role\_id](#output\_execution\_role\_id) | The ID of the execution role. |
 | <a name="output_execution_role_name"></a> [execution\_role\_name](#output\_execution\_role\_name) | The name of the execution service role. |
