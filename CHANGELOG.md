@@ -7,6 +7,12 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="2.1.2"></a>
+## [2.1.2] - 2021-07-16
+
+- 'task_container_working_directory' encoded with jsonencode function ([#16](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/16))
+
+
 <a name="2.1.1"></a>
 ## [2.1.1] - 2021-04-21
 
@@ -86,7 +92,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.1...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.2...HEAD
+[2.1.2]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.2...2.1.0
 [2.0.2]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.1...2.0.2

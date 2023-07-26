@@ -114,6 +114,7 @@ variable "repository_credentials_kms_key" {
 variable "create_repository_credentials_iam_policy" {
   default     = false
   description = "Set to true if you are specifying `repository_credentials` variable, it will attach IAM policy with necessary permissions to task role."
+  type        = bool
 }
 
 variable "placement_constraints" {
@@ -131,6 +132,7 @@ variable "proxy_configuration" {
 variable "volume" {
   description = "(Optional) A set of volume blocks that containers in your task may use. This is a list of maps, where each map should contain \"name\", \"host_path\", \"docker_volume_configuration\" and \"efs_volume_configuration\". Full set of options can be found at https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html"
   default     = []
+  type        = any
 }
 
 variable "task_health_check" {

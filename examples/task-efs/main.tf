@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "eu-west-1"
-}
-
 resource "aws_efs_file_system" "efs" {
   creation_token = "efs-html"
 
