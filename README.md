@@ -44,7 +44,7 @@ Module is to be used with Terraform > 0.12.
 
 Module managed by [Marcin Cuber](https://github.com/marcincuber) [LinkedIn](https://www.linkedin.com/in/marcincuber/).
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -116,7 +116,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_container_port"></a> [container\_port](#output\_container\_port) | Port on which the container is listening. |
-| <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | The Amazon Resource Name (ARN : null of execution role. |
+| <a name="output_execution_role_arn"></a> [execution\_role\_arn](#output\_execution\_role\_arn) | The Amazon Resource Name (ARN) of the execution role. |
 | <a name="output_execution_role_create_date"></a> [execution\_role\_create\_date](#output\_execution\_role\_create\_date) | The creation date of the IAM role. |
 | <a name="output_execution_role_id"></a> [execution\_role\_id](#output\_execution\_role\_id) | The ID of the execution role. |
 | <a name="output_execution_role_name"></a> [execution\_role\_name](#output\_execution\_role\_name) | The name of the execution service role. |
@@ -129,7 +129,7 @@ No modules.
 | <a name="output_task_role_id"></a> [task\_role\_id](#output\_task\_role\_id) | The ID of the role. |
 | <a name="output_task_role_name"></a> [task\_role\_name](#output\_task\_role\_name) | The name of the Fargate task service role. |
 | <a name="output_task_role_unique_id"></a> [task\_role\_unique\_id](#output\_task\_role\_unique\_id) | The stable and unique string identifying the role. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## License
 
