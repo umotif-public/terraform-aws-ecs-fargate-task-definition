@@ -24,7 +24,7 @@ output "task_role_unique_id" {
 }
 
 output "execution_role_arn" {
-  description = "The Amazon Resource Name (ARN : null of execution role."
+  description = "The Amazon Resource Name (ARN) of the execution role."
   value       = var.enabled ? aws_iam_role.execution[0].arn : null
 }
 

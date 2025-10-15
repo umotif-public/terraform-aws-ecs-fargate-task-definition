@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 <a name="unreleased"></a>
 ## [Unreleased]
 
+- DEVOPS-3361 Added back the network_mode variable
+- DEVOPS-3361 AWS Provider 6.0 compatibility
+
+
+<a name="2.2.0"></a>
+## [2.2.0] - 2023-07-26
+
+- chore: upgrade to 5.x compatibility + documentation ([#17](https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/issues/17))
 
 
 <a name="2.1.2"></a>
@@ -92,7 +100,8 @@ All notable changes to this project will be documented in this file.
 - Initial commit
 
 
-[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.2...HEAD
+[Unreleased]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.2.0...HEAD
+[2.2.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.2...2.2.0
 [2.1.2]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/umotif-public/terraform-aws-ecs-fargate-task-definition/compare/2.0.2...2.1.0
