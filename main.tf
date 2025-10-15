@@ -63,6 +63,7 @@ resource "aws_ecs_task_definition" "task" {
 
   family                   = var.name_prefix
   execution_role_arn       = aws_iam_role.execution[0].arn
+  network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.task_definition_cpu
   memory                   = var.task_definition_memory
